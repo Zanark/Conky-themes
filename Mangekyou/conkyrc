@@ -1,0 +1,92 @@
+conky.config = {
+   
+background = true,
+update_interval = 1,
+
+double_buffer = true,
+no_buffers = true,
+text_buffer_size = 2048,
+
+gap_x = 30,
+gap_y = 80,
+minimum_width = 200, minimum_height = 200,
+maximum_width = 400,
+own_window = true,
+own_window_type = 'dock',
+
+own_window_argb_visual = true,
+own_window_argb_value = 60,
+own_window_transparent = true,
+
+own_window_transparent = true,
+own_window_argb_visual = true,
+
+own_window_class = 'conky-semi',
+own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+border_inner_margin = 10,
+border_outer_margin = 10,
+
+-- EDIT THIS TO CHANGE POSITION
+alignment = 'middle_right',
+
+draw_shades = true,
+draw_outline = false,
+draw_borders = false,
+draw_graph_borders = false,
+
+override_utf8_locale = true,
+use_xft = true,
+font = 'Open Sans Light:normal:size=10',
+xftalpha = 0.8,
+uppercase = true,
+
+-- Defining colors
+default_color = '#c5f0f7'
+
+};
+
+conky.text = [[
+${voffset 105}${offset 300}${image /Mangekyou_Sharingan_Madara.png}
+$hr
+  $nodename  |  Battery:  $battery_percent%  |  ${color F5FF49}$battery_time
+$hr
+
+${color white}CPU:
+
+${cpugraph cpu0 10,120 00A505 72DB75 FFFC7A -l} ${cpugraph cpu1 10,120 00A505 72DB75 FFFC7A -l}
+${color grey} CPU1: $color ${cpu cpu0}% 							${color grey} CPU2: $color ${cpu cpu1}%
+${cpugraph cpu2 10,120 00A505 72DB75 FFFC7A -l} ${cpugraph cpu3 10,120 00A505 72DB75 FFFC7A -l}
+${color grey} CPU3: $color ${cpu cpu2}% 							${color grey} CPU4: $color ${cpu cpu3}%
+
+${color grey}CPU Usage:$color $cpu% ${cpubar 4}
+
+${memgraph 10,120 00A505 FFFC7A -l}
+
+${color white}RAM:
+
+${color grey}RAM Usage :$color $mem/$memmax - $memperc% ${membar 4}
+${color grey}Swap Usage :$color $swap/$swapmax - $swapperc% ${swapbar 4}
+# ${color grey}Frequency (in MHz) :$color $freq
+# ${color grey}Frequency (in GHz) :$color $freq_g
+$hr
+            ${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
+$hr
+#--------------------For Input output speeds-------------------------------
+# ${color grey}I/O:
+# ${diskiograph_read /dev/sda 10,120 555555 AAAAAA -l}${diskiograph_write /dev/sda 10,120 555555 AAAAAA -l}
+# ${color grey}Read:$color ${diskio_read /dev/sda}						${color grey}Write:$color ${diskio_write /dev/sda}
+# $hr
+#--------------------For data speeds---------------------------------------
+    ${color grey}DATA
+    ${upspeedgraph wlp3s0 20,120 CB00FF 10E1E5 -l} ${downspeedgraph wlp3s0 20,120 F5FF49 FF4962 -l}
+    $color ${font FontAwesome} ${font}${upspeed wlp3s0} 		${color grey} ${font FontAwesome}${goto 202}${font} $color ${downspeed wlp3s0}
+$hr
+#-------------------For TIME----------------------------------------------
+    ${voffset 5}${color C8C2FF}${font Courier:size=20}${time %A}${font}${voffset -5}
+    ${voffset 5}${color C8C2FF}${font Courier:size=20}${time %B} ${time %e}${font}${voffset -5}
+    
+    ${voffset 5}${color C8C2FF}${font Digital\-7 Mono:size=50}${time %I:%M %p}${font}${voffset -5}
+
+$hr
+
+]];
